@@ -1,0 +1,17 @@
+{
+  "name": "touchup",
+  "description": "",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:deathcap/touchup.git"
+  },
+  "keywords": [
+    "voxel"
+  ],
+  "dependencies": {
+  },
+  "peerDependencies": {
+  },
+  "license": "MIT"
+}
