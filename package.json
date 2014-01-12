@@ -1,18 +1,14 @@
 {
   "name": "touchup",
-  "description": "",
+  "description": "tile images using HTML5 canvas",
   "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:deathcap/touchup.git"
   },
   "keywords": [
-    "voxel"
+    "image"
   ],
-  "dependencies": {
-  },
-  "peerDependencies": {
-  },
   "scripts": {
     "start": "beefy demo.js"
   },
