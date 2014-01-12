@@ -21,6 +21,10 @@ repeat = (sourceImage, timesX, timesY) ->
 
   return canvas.toDataURL()
 
+# make the image bigger or smaller
+# note from spec http://www.w3.org/html/wg/drafts/2dcontext/html5_canvas_CR/#drawing-images-to-the-canvas
+# "This specification does not define the algorithm to use when scaling the image, if necessary."
+# which makes it mostly useless
 scale = (sourceImage, scaleX, scaleY) ->
   destW = sourceImage.width * scaleX
   destH = sourceImage.width * scaleY
@@ -31,4 +35,21 @@ scale = (sourceImage, scaleX, scaleY) ->
 
   return canvas.toDataURL()
 
-module.exports = { repeat, scale }
+crop = (sourceImage, ox, oy, ow, oh) ->
+  sx = ox || 0
+  sy = oy || 0
+
+  destW = sourceImage.width - (ow || 0) - sx
+  destH = sourceImage.height - (oh || 0) - sy
+
+  sw = destW
+  sh = destH
+
+  [canvas, context] = createCanvas destW, destH
+
+  console.log(sx,sy,sw,sh,0,0,destW,destH)
+  context.drawImage sourceImage, sx, sy, sw, sh, 0, 0, destW, destH
+
+  return canvas.toDataURL()
+
+module.exports = { repeat, scale, crop }
