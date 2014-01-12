@@ -52,4 +52,25 @@ crop = (sourceImage, ox, oy, ow, oh) ->
 
   return canvas.toDataURL()
 
-module.exports = { repeat, scale, crop }
+overallSize = (sourceImages) ->
+  destW = destH = 0
+  for sourceImage in sourceImages
+    destW = sourceImage.width if sourceImage.width > destW
+    destH = sourceImage.height if sourceImage.height > destH
+
+  return [destW, destH]
+
+overlay = (sourceImages, operation, alpha) ->
+  [destW, destH] = overallSize sourceImages
+  [canvas, context] = createCanvas destW, destH
+
+  # see http://www.w3.org/html/wg/drafts/2dcontext/html5_canvas_CR/#compositing
+  context.globalAlpha = alpha ? 1.0
+  context.globalCompositeOperation = operation ? 'source-over'
+
+  for sourceImage in sourceImages
+    context.drawImage sourceImage, 0, 0
+
+  return canvas.toDataURL()
+
+module.exports = { repeat, scale, crop, overlay }
