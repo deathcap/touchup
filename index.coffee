@@ -1,13 +1,18 @@
 
+createCanvas = (w, h) ->
+  canvas = document.createElement 'canvas'
+  canvas.setAttribute 'width', w
+  canvas.setAttribute 'height', h
+
+  context = canvas.getContext '2d'
+
+  return [canvas, context]
+
 repeat = (sourceImage, timesX, timesY) ->
   destW = sourceImage.width * timesX
   destH = sourceImage.height * timesY
 
-  canvas = document.createElement 'canvas'
-  canvas.setAttribute 'width', destW
-  canvas.setAttribute 'height', destH
-
-  context = canvas.getContext '2d'
+  [canvas, context] = createCanvas destW, destH
 
   pattern = context.createPattern sourceImage, 'repeat'
 
