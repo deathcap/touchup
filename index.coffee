@@ -21,5 +21,14 @@ repeat = (sourceImage, timesX, timesY) ->
 
   return canvas.toDataURL()
 
+scale = (sourceImage, scaleX, scaleY) ->
+  destW = sourceImage.width * scaleX
+  destH = sourceImage.width * scaleY
 
-module.exports = { repeat }
+  [canvas, context] = createCanvas destW, destH
+
+  context.drawImage sourceImage, 0, 0, destW, destH
+
+  return canvas.toDataURL()
+
+module.exports = { repeat, scale }
