@@ -18,6 +18,10 @@ Tiles the source image a number of times in each direction, for example 2x2:
 
 Resize an image up (`>1`) or down (`<1`) using browser-dependent scaling algorithm.
 
+    touchup.scale(sourceImage, scaleX, scaleY, 'nearest-neighbor')
+
+Resize an image with image smoothing disabled.
+
     touchup.crop(sourceImage, ox, oy, ow, oh)
 
 Truncate the edges of an image by the given offsets (0 = no change).

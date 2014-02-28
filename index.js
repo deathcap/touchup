@@ -22,11 +22,14 @@
     return canvas.toDataURL();
   };
 
-  scale = function(sourceImage, scaleX, scaleY) {
+  scale = function(sourceImage, scaleX, scaleY, algorithm) {
     var canvas, context, destH, destW, _ref;
     destW = sourceImage.width * scaleX;
     destH = sourceImage.width * scaleY;
     _ref = createCanvas(destW, destH), canvas = _ref[0], context = _ref[1];
+    if (algorithm === 'nearest-neighbor') {
+      context.imageSmoothingEnabled = false;
+    }
     context.drawImage(sourceImage, 0, 0, destW, destH);
     return canvas.toDataURL();
   };
