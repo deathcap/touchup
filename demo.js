@@ -19,6 +19,7 @@ var showImage = function(url, note, cb) {
 showImage(sourceURL, 'source', function(imageElement) {
   showImage(touchup.repeat(imageElement, 2, 2), 'repeat(2,2)');
   showImage(touchup.scale(imageElement, 2.0, 2.0), 'scale(2,2)');
+  showImage(touchup.scale(imageElement, 4.0, 4.0), 'scale(4,4)');
   showImage(touchup.scale(imageElement, 3.0, 0.5), 'scale(3,0.5)');
   showImage(touchup.repeat(imageElement, 7, 9), 'repeat(7,9)',
     function(repImage) {
