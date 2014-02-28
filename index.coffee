@@ -33,6 +33,8 @@ scale = (sourceImage, scaleX, scaleY, algorithm) ->
 
   if algorithm == 'nearest-neighbor'
     context.imageSmoothingEnabled = false
+    context.webkitImageSmoothingEnabled = false
+    context.mozImageSmoothingEnabled = false
   # TODO: more algorithms, probably using ndarray see https://github.com/deathcap/touchup/issues/1
 
   context.drawImage sourceImage, 0, 0, destW, destH

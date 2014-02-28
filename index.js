@@ -29,6 +29,8 @@
     _ref = createCanvas(destW, destH), canvas = _ref[0], context = _ref[1];
     if (algorithm === 'nearest-neighbor') {
       context.imageSmoothingEnabled = false;
+      context.webkitImageSmoothingEnabled = false;
+      context.mozImageSmoothingEnabled = false;
     }
     context.drawImage(sourceImage, 0, 0, destW, destH);
     return canvas.toDataURL();
