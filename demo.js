@@ -22,7 +22,8 @@ showImage(sourceURL, 'source', function(imageElement) {
   showImage(touchup.scale(imageElement, 4.0, 4.0), 'scale(4,4)');
   showImage(touchup.scale(imageElement, 4.0, 4.0, 'nearest-neighbor'), 'scale(4,4,"nearest-neighbor")');
   showImage(touchup.scale(imageElement, 3.0, 0.5), 'scale(3,0.5)');
-  showImage(touchup.recolor(imageElement, 0x000000, 0xffffff), 'recolor');
+  showImage(touchup.recolor(imageElement, 0x674829ff, 0x00ff00ff), 'recolor');
+  showImage(touchup.recolor(imageElement, 0xad7c4aff, 0x0000ffff), 'recolor');
   showImage(touchup.repeat(imageElement, 7, 9), 'repeat(7,9)',
     function(repImage) {
       showImage(touchup.crop(repImage, 0, 0, 0, 0), '...crop(0,0,0,0)');

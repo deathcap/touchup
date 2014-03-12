@@ -79,11 +79,42 @@ overlay = (sourceImages, operation, alpha) ->
 
   return canvas.toDataURL()
 
+packRGBA = (r, g, b, a) ->
+  r * 0x01000000 +    # not << 24 because of signedness
+    (g << 16) +
+    (b << 8) +
+    a
+
+unpackRGBA = (n) ->
+  r = n >>> 24
+  g = n >>> 16 & 0xff
+  b = n >>> 8 & 0xff
+  a = n & 0xff
+  [r, g, b, a]
+
 recolor = (sourceImage, fromColor, toColor) ->
   [canvas, context] = createCanvas sourceImage.width, sourceImage.height
 
-  # TODO
   context.drawImage sourceImage, 0, 0
+  imagedata = context.getImageData 0, 0, sourceImage.width, sourceImage.height
+  data = imagedata.data
+  for i in [0...data.length] by 4   # TODO: optimize, use ndarray/cwise?
+    #[r, g, b, a] = data.data[i..i + 3] # Uint8ClampedArray has no method 'slice'
+    r = data[i]
+    g = data[i + 1]
+    b = data[i + 2]
+    a = data[i + 3]
+    rgba = packRGBA r, g, b, a
+    #console.log 'rgba',r,g,b,rgba,rgba.toString(16)
+
+    if rgba == fromColor
+      [r, g, b, a] = unpackRGBA toColor
+      data[i] = r
+      data[i + 1] = g
+      data[i + 2] = b
+      data[i + 3] = a
+
+  context.putImageData imagedata, 0, 0
 
   return canvas.toDataURL()
 
