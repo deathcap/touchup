@@ -79,4 +79,12 @@ overlay = (sourceImages, operation, alpha) ->
 
   return canvas.toDataURL()
 
-module.exports = { repeat, scale, crop, overlay }
+recolor = (sourceImage, fromColor, toColor) ->
+  [canvas, context] = createCanvas sourceImage.width, sourceImage.height
+
+  # TODO
+  context.drawImage sourceImage, 0, 0
+
+  return canvas.toDataURL()
+
+module.exports = { repeat, scale, crop, overlay, recolor }
