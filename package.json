@@ -17,5 +17,9 @@
   "scripts": {
     "start": "beefy demo.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "beefy": "^2.1.6",
+    "browserify": "^13.0.1"
+  }
 }
