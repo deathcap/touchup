@@ -1,7 +1,7 @@
 {
   "name": "touchup",
   "description": "quick & dirty image manipulation using HTML5 canvas",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "main": "touchup.js",
   "repository": {
     "type": "git",
